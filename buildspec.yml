@@ -16,7 +16,7 @@ phases:
     commands:
       - echo Pushing image to ECR
       - docker push 539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest
-      - printf '[{"name":"custom-microservice","imageUri":"%s"}]' 539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest > imagedefinitions.json
+      - printf '[{"name":"custo-microservice","imageUri":"%s"}]' 539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest > imagedefinitions.json
 
 artifacts:
   files:
