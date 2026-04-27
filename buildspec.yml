@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to ECR
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 539609142335.dkr.ecr.ap-south-1.amazonaws.com
+
+  build:
+    commands:
+      - echo Building Docker image
+      - docker build -t custom-microservice .
+      - docker tag custom-microservice:latest 539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest
+
+  post_build:
+    commands:
+      - echo Pushing image to ECR
+      - docker push 539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest
+      - printf '[{"name":"custom-microservice","imageUri":"%s"}]' 539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
