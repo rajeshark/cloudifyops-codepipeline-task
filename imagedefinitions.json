@@ -1,7 +1,0 @@
-[
-  {
-    "name": "custom-microservice",
-    "imageUri": "539609142335.dkr.ecr.ap-south-1.amazonaws.com/custom-microservice-cloudifyops:latest"
-  }
-
-]
